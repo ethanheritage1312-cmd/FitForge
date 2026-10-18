@@ -1,504 +1,265 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FitForge helps you plan workouts, healthy meals and a fitness routine that fits your lifestyle.">
-  <title>FitForge | Build Your Best</title>
-  <style>
-    :root {
-      --bg: #101410;
-      --panel: #1a211b;
-      --green: #b6f36b;
-      --text: #f5f7f2;
-      --muted: #aab5a8;
-      --border: #303a30;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header {
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(16, 20, 16, .96);
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    nav a:hover {
-      color: var(--green);
-    }
-
-    .hero {
-      padding: 75px 6% 65px;
-      background: radial-gradient(ellipse at 85% 20%, #30452a 0%, transparent 42%);
-    }
-
-    .tag {
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.04;
-      letter-spacing: -3px;
-      max-width: 750px;
-      margin: 20px 0;
-    }
-
-    h1 span {
-      color: var(--green);
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 550px;
-      margin-bottom: 27px;
-      font-size: 17px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--green);
-      color: #11170e;
-      padding: 13px 21px;
-      border-radius: 7px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      margin-left: 8px;
-    }
-
-    section {
-      padding: 55px 6%;
-      scroll-margin-top: 80px;
-    }
-
-    .section-head {
-      margin-bottom: 25px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(26px, 5vw, 38px);
-      letter-spacing: -1px;
-      margin: 7px 0;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 620px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 17px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 23px;
-    }
-
-    .card .emoji {
-      font-size: 31px;
-      margin-bottom: 13px;
-    }
-
-    .card h3 {
-      font-size: 19px;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .card a {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .highlight {
-      background: #182019;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-      align-items: center;
-    }
-
-    .split h2 {
-      font-size: clamp(29px, 5vw, 43px);
-      line-height: 1.15;
-      margin: 10px 0 16px;
-    }
-
-    .split p {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .feature-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .feature-list li::before {
-      content: "✓ ";
-      color: var(--green);
-      font-weight: bold;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .stat {
-      background: var(--panel);
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 25px;
-      color: var(--green);
-    }
-
-    .stat span {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .callout {
-      text-align: center;
-      background: linear-gradient(135deg, #263923, #182019);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 42px 22px;
-    }
-
-    .callout h2 {
-      font-size: clamp(28px, 5vw, 42px);
-      margin-bottom: 10px;
-    }
-
-    .callout p {
-      color: var(--muted);
-      margin: 0 auto 22px;
-      max-width: 560px;
-    }
-
-    footer {
-      padding: 28px 6%;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 13px;
-      }
-
-      .hero {
-        padding-top: 55px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .split {
-        grid-template-columns: 1fr;
-      }
-
-      .btn.secondary {
-        margin: 10px 0 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitForge | Your Personal Fitness Companion</title>
+<meta name="description" content="Build a stronger, healthier you with personalised workout plans and nutrition guidance.">
+<style>
+:root {
+  --olive: #494c31;
+  --olive-light: #676a49;
+  --peach: #f4c7a8;
+  --cream: #fbf5eb;
+  --text: #3e422d;
+  --white: #fffaf3;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+header {
+  background: var(--olive);
+  color: white;
+  padding: 14px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.logo { font-size: 25px; font-weight: 800; letter-spacing: 2px; }
+.logo span { color: var(--peach); }
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; font-size: 14px; }
+nav a:hover { color: var(--peach); }
+.btn {
+  display: inline-block;
+  background: var(--peach);
+  color: var(--olive);
+  padding: 11px 20px;
+  border: 0;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.hero {
+  min-height: 390px;
+  padding: 55px 6%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #f8ead8 0%, #f8ead8ed 42%, #f8ead866 100%),
+  url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=85') center/cover;
+}
+.hero-content { max-width: 540px; }
+.eyebrow {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+h1 { font-size: clamp(42px, 7vw, 76px); line-height: 1.05; margin: 12px 0; }
+h1 span { color: #d99570; }
+h2 { line-height: 1.2; }
+.hero p { max-width: 430px; margin-bottom: 24px; }
+section { padding: 38px 6%; }
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.feature {
+  background: #f5eadb;
+  border: 1px solid #eee1d0;
+  border-radius: 14px;
+  padding: 20px 14px;
+  text-align: center;
+}
+.feature .symbol { font-size: 27px; }
+.feature h3 { margin: 5px 0; font-size: 17px; }
+.feature p { font-size: 13px; margin: 4px 0; }
+.planner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  background: #f3dfcc;
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 6% 42px;
+}
+.planner-image {
+  min-height: 390px;
+  background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85') center/cover;
+}
+.planner-content { padding: 28px; }
+form { display: grid; gap: 13px; }
+label { font-size: 13px; font-weight: bold; display: grid; gap: 5px; }
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dfd1be;
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 14px;
+}
+form .btn { background: var(--olive); color: white; margin-top: 5px; }
+#plan-result {
+  display: none;
+  background: var(--white);
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+footer {
+  background: var(--olive);
+  color: white;
+  text-align: center;
+  padding: 35px 6%;
+}
+footer h2 { color: var(--peach); }
+footer p { font-size: 14px; }
+@media (max-width: 700px) {
+  header { justify-content: center; text-align: center; }
+  nav { justify-content: center; gap: 14px; }
+  .hero { min-height: 360px; padding: 40px 6%; background-position: 60% center; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .planner { grid-template-columns: 1fr; }
+  .planner-image { min-height: 260px; }
+  .planner-content { padding: 22px; }
+  section { padding-top: 28px; padding-bottom: 28px; }
+}
+@media (max-width: 380px) {
+  .features { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
+<header>
+  <div class="logo">F<span>IT</span>FORGE</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#workouts">Workout Planner</a>
+    <a href="#meals">Meal Planner</a>
+    <a href="#about">About</a>
+  </nav>
+  <a class="btn" href="#workouts">Get Started →</a>
+</header>
 
-  <header>
-    <a class="logo" href="#home">FIT<span>FORGE</span></a>
-    <nav>
-      <a href="#workouts">Workouts</a>
-      <a href="#meals">Meal plans</a>
-      <a href="#home-fitness">Home fitness</a>
-      <a href="#progress">Progress</a>
-      <a href="#science">Our approach</a>
-    </nav>
-  </header>
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Build a stronger, healthier you</div>
+    <h1>FIT<span>FORGE</span></h1>
+    <h2>Your Personal Fitness Companion</h2>
+    <p>Custom workout plans, balanced nutrition guidance and the tools you need to build healthy habits — all in one place.</p>
+    <a class="btn" href="#workouts">Start Your Journey →</a>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="tag">Your journey. Your strength.</div>
-      <h1>Build better habits.<br><span>Become stronger.</span></h1>
-      <p>
-        Your all-in-one starting point for training, balanced meals
-        and building a fitness routine that works for your lifestyle.
-        Gym or home, beginner or experienced — start where you are.
-      </p>
-      <a class="btn" href="#workouts">Explore workouts →</a>
-      <a class="btn secondary" href="#meals">Explore meal plans</a>
-    </section>
+<section id="about">
+  <div class="features">
+    <article class="feature">
+      <div class="symbol">🏋️</div>
+      <h3>Workout Planner</h3>
+      <p>Explore gym and home workout ideas for your experience level.</p>
+    </article>
+    <article class="feature" id="meals">
+      <div class="symbol">🥗</div>
+      <h3>Meal Planner</h3>
+      <p>Discover balanced meal ideas and simple recipes.</p>
+    </article>
+    <article class="feature">
+      <div class="symbol">🎯</div>
+      <h3>Track Progress</h3>
+      <p>Stay consistent and celebrate your progress over time.</p>
+    </article>
+    <article class="feature">
+      <div class="symbol">♡</div>
+      <h3>Healthy Lifestyle</h3>
+      <p>Build realistic habits for a healthier everyday life.</p>
+    </article>
+  </div>
+</section>
 
-    <section id="workouts">
-      <div class="section-head">
-        <div class="tag">Train with purpose</div>
-        <h2>Find your workout</h2>
-        <p>Explore training options that you can adapt to your experience, equipment and schedule.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="emoji">🏋️</div>
-          <h3>Gym training</h3>
-          <p>Explore strength exercises, training splits, sets, repetitions and rest guidance.</p>
-          <a href="#science">Learn about training →</a>
-        </article>
-        <article class="card" id="home-fitness">
-          <div class="emoji">🏠</div>
-          <h3>Home workouts</h3>
-          <p>Build a routine with bodyweight movements and equipment you already have.</p>
-          <a href="#science">Explore the basics →</a>
-        </article>
-        <article class="card">
-          <div class="emoji">🌱</div>
-          <h3>Beginner fitness</h3>
-          <p>Start gradually with manageable sessions, recovery and sustainable habits.</p>
-          <a href="#science">Start with the basics →</a>
-        </article>
-      </div>
-    </section>
+<section class="planner" id="workouts">
+  <div class="planner-image" role="img" aria-label="Fitness and healthy lifestyle"></div>
+  <div class="planner-content">
+    <div class="eyebrow">Your fitness journey starts here</div>
+    <h2>Start Your Plan</h2>
+    <p>Choose your preferences to get a simple starter workout plan.</p>
+    <form id="workout-form">
+      <label>Where will you exercise?
+        <select id="place">
+          <option value="gym">Gym</option>
+          <option value="home">At home</option>
+        </select>
+      </label>
+      <label>Your experience
+        <select id="level">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </label>
+      <label>Days per week
+        <select id="days">
+          <option value="3">3 days</option>
+          <option value="4">4 days</option>
+          <option value="5">5 days</option>
+          <option value="6">6 days</option>
+        </select>
+      </label>
+      <label>Your focus
+        <select id="goal">
+          <option value="strength">Strength and fitness</option>
+          <option value="endurance">Endurance and cardio</option>
+          <option value="general">General health</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Create My Plan →</button>
+    </form>
+    <div id="plan-result" aria-live="polite"></div>
+  </div>
+</section>
+</main>
 
-    <section class="highlight" id="meals">
-      <div class="split">
-        <div>
-          <div class="tag">Fuel your day</div>
-          <h2>Make healthy eating easier.</h2>
-          <p>
-            Discover meal-prep ideas, balanced recipes and practical ways
-            to organise your food for the week. Adapt meals to your
-            preferences, budget and everyday routine.
-          </p>
-          <ul class="feature-list">
-            <li>Breakfast, lunch, dinner and snack ideas</li>
-            <li>Recipes with ingredients and instructions</li>
-            <li>Weekly shopping-list planning</li>
-            <li>Flexible options for different dietary preferences</li>
-          </ul>
-          <br>
-          <a class="btn" href="#meal-ideas">Explore meal ideas →</a>
-        </div>
-        <div class="stat-grid">
-          <div class="stat">
-            <strong>🥗</strong>
-            <span>Balanced meal ideas</span>
-          </div>
-          <div class="stat">
-            <strong>🛒</strong>
-            <span>Shopping-list planning</span>
-          </div>
-          <div class="stat">
-            <strong>🍳</strong>
-            <span>Simple recipes</span>
-          </div>
-          <div class="stat">
-            <strong>📅</strong>
-            <span>Weekly preparation</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer>
+  <h2>Small Steps. Big Results.</h2>
+  <p>FitForge is here to help you build a stronger, healthier, happier you — one step at a time.</p>
+  <p>Fitness looks different for everyone. Progress at your own pace.</p>
+</footer>
 
-    <section id="meal-ideas">
-      <div class="section-head">
-        <div class="tag">Start with the essentials</div>
-        <h2>Simple meal-prep ideas</h2>
-        <p>Use these as inspiration. Choose portions and ingredients that suit your needs and preferences.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="emoji">🥣</div>
-          <h3>Breakfast</h3>
-          <p>Try oats with yoghurt and fruit, or eggs with wholegrain toast.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🍱</div>
-          <h3>Lunch prep</h3>
-          <p>Combine a protein source, vegetables and rice, potatoes or another grain.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🍲</div>
-          <h3>Dinner</h3>
-          <p>Prepare a balanced meal such as bean stew, chicken with vegetables, or tofu stir-fry.</p>
-        </article>
-      </div>
-    </section>
+<script>
+document.getElementById('workout-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const place = document.getElementById('place').value;
+  const level = document.getElementById('level').value;
+  const days = Number(document.getElementById('days').value);
+  const goal = document.getElementById('goal').value;
 
-    <section id="progress" class="highlight">
-      <div class="split">
-        <div>
-          <div class="tag">Consistency over perfection</div>
-          <h2>Your progress starts with small steps.</h2>
-          <p>
-            Set a realistic goal, plan your week and celebrate consistency.
-            Our future progress tracker will help you record workouts,
-            habits and personal milestones.
-          </p>
-          <a class="btn" href="#workouts">Plan your first session →</a>
-        </div>
-        <div class="stat-grid">
-          <div class="stat">
-            <strong>01</strong>
-            <span>Choose a goal</span>
-          </div>
-          <div class="stat">
-            <strong>02</strong>
-            <span>Build your routine</span>
-          </div>
-          <div class="stat">
-            <strong>03</strong>
-            <span>Track consistency</span>
-          </div>
-          <div class="stat">
-            <strong>04</strong>
-            <span>Review and adapt</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="science">
-      <div class="section-head">
-        <div class="tag">Evidence matters</div>
-        <h2>Fitness advice with a thoughtful approach.</h2>
-        <p>
-          FitForge is being designed around established exercise science,
-          public-health guidance and sound nutrition principles — not
-          miracle promises or one-size-fits-all routines.
-        </p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="emoji">📚</div>
-          <h3>Research-informed</h3>
-          <p>Exercise and nutrition guidance should be supported by reliable evidence and credible references.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🛡️</div>
-          <h3>Safety first</h3>
-          <p>Progress gradually, prioritise recovery and seek qualified advice for medical concerns.</p>
-        </article>
-        <article class="card">
-          <div class="emoji">🧭</div>
-          <h3>Personal flexibility</h3>
-          <p>Different people have different goals, preferences, abilities and starting points.</p>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="callout">
-        <div class="tag">Welcome to FitForge</div>
-        <h2>Your journey starts here.</h2>
-        <p>
-          Build a routine around movement, balanced meals and habits
-          you can maintain. Start small and keep learning.
-        </p>
-        <a class="btn" href="#workouts">Explore the website →</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <a class="logo" href="#home">FIT<span>FORGE</span></a>
-    <p>Evidence-informed fitness and meal-planning education.</p>
-    <p>General information only; not a substitute for individual medical advice.</p>
-    <p>© 2026 FitForge</p>
-  </footer>
-
+  const plans = {
+    strength: ['Full-body strength', 'Upper body and core', 'Lower body and balance', 'Full-body strength', 'Optional light activity', 'Full-body strength'],
+    endurance: ['Brisk walk or cardio', 'Light strength and mobility', 'Cardio intervals at a comfortable pace', 'Brisk walk or cycling', 'Full-body movement', 'Enjoyable cardio'],
+    general: ['Full-body movement', 'Walking and mobility', 'Full-body movement', 'Walking and stretching', 'Full-body movement', 'Fun activity']
+  };
+  const selected = plans[goal].slice(0, days);
+  let html = '<h3>Your starter plan</h3><p><strong>Location:</strong> ' +
+    (place === 'gym' ? 'Gym' : 'Home') + ' · <strong>Level:</strong> ' +
+    level.charAt(0).toUpperCase() + level.slice(1) + '</p><ol>';
+  selected.forEach(function(item) { html += '<li>' + item + '</li>'; });
+  html += '</ol><p>Rest or take a gentle walk on other days. Adjust activity to your ability and take breaks when needed.</p>';
+  const result = document.getElementById('plan-result');
+  result.innerHTML = html;
+  result.style.display = 'block';
+});
+</script>
 </body>
 </html>
