@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FitForge helps you plan workouts, healthy meals and a fitness routine that fits your lifestyle.">
+  <title>FitForge | Build Your Best</title>
+  <style>
+    :root {
+      --bg: #101410;
+      --panel: #1a211b;
+      --green: #b6f36b;
+      --text: #f5f7f2;
+      --muted: #aab5a8;
+      --border: #303a30;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(16, 20, 16, .96);
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      padding: 75px 6% 65px;
+      background: radial-gradient(ellipse at 85% 20%, #30452a 0%, transparent 42%);
+    }
+
+    .tag {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -3px;
+      max-width: 750px;
+      margin: 20px 0;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 550px;
+      margin-bottom: 27px;
+      font-size: 17px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: #11170e;
+      padding: 13px 21px;
+      border-radius: 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-left: 8px;
+    }
+
+    section {
+      padding: 55px 6%;
+      scroll-margin-top: 80px;
+    }
+
+    .section-head {
+      margin-bottom: 25px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(26px, 5vw, 38px);
+      letter-spacing: -1px;
+      margin: 7px 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 23px;
+    }
+
+    .card .emoji {
+      font-size: 31px;
+      margin-bottom: 13px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .card a {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .highlight {
+      background: #182019;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .split h2 {
+      font-size: clamp(29px, 5vw, 43px);
+      line-height: 1.15;
+      margin: 10px 0 16px;
+    }
+
+    .split p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-list li::before {
+      content: "✓ ";
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: var(--panel);
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: var(--green);
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .callout {
+      text-align: center;
+      background: linear-gradient(135deg, #263923, #182019);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 42px 22px;
+    }
+
+    .callout h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 10px;
+    }
+
+    .callout p {
+      color: var(--muted);
+      margin: 0 auto 22px;
+      max-width: 560px;
+    }
+
+    footer {
+      padding: 28px 6%;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 13px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .btn.secondary {
+        margin: 10px 0 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="#home">FIT<span>FORGE</span></a>
+    <nav>
+      <a href="#workouts">Workouts</a>
+      <a href="#meals">Meal plans</a>
+      <a href="#home-fitness">Home fitness</a>
+      <a href="#progress">Progress</a>
+      <a href="#science">Our approach</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="tag">Your journey. Your strength.</div>
+      <h1>Build better habits.<br><span>Become stronger.</span></h1>
+      <p>
+        Your all-in-one starting point for training, balanced meals
+        and building a fitness routine that works for your lifestyle.
+        Gym or home, beginner or experienced — start where you are.
+      </p>
+      <a class="btn" href="#workouts">Explore workouts →</a>
+      <a class="btn secondary" href="#meals">Explore meal plans</a>
+    </section>
+
+    <section id="workouts">
+      <div class="section-head">
+        <div class="tag">Train with purpose</div>
+        <h2>Find your workout</h2>
+        <p>Explore training options that you can adapt to your experience, equipment and schedule.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="emoji">🏋️</div>
+          <h3>Gym training</h3>
+          <p>Explore strength exercises, training splits, sets, repetitions and rest guidance.</p>
+          <a href="#science">Learn about training →</a>
+        </article>
+        <article class="card" id="home-fitness">
+          <div class="emoji">🏠</div>
+          <h3>Home workouts</h3>
+          <p>Build a routine with bodyweight movements and equipment you already have.</p>
+          <a href="#science">Explore the basics →</a>
+        </article>
+        <article class="card">
+          <div class="emoji">🌱</div>
+          <h3>Beginner fitness</h3>
+          <p>Start gradually with manageable sessions, recovery and sustainable habits.</p>
+          <a href="#science">Start with the basics →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="highlight" id="meals">
+      <div class="split">
+        <div>
+          <div class="tag">Fuel your day</div>
+          <h2>Make healthy eating easier.</h2>
+          <p>
+            Discover meal-prep ideas, balanced recipes and practical ways
+            to organise your food for the week. Adapt meals to your
+            preferences, budget and everyday routine.
+          </p>
+          <ul class="feature-list">
+            <li>Breakfast, lunch, dinner and snack ideas</li>
+            <li>Recipes with ingredients and instructions</li>
+            <li>Weekly shopping-list planning</li>
+            <li>Flexible options for different dietary preferences</li>
+          </ul>
+          <br>
+          <a class="btn" href="#meal-ideas">Explore meal ideas →</a>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <strong>🥗</strong>
+            <span>Balanced meal ideas</span>
+          </div>
+          <div class="stat">
+            <strong>🛒</strong>
+            <span>Shopping-list planning</span>
+          </div>
+          <div class="stat">
+            <strong>🍳</strong>
+            <span>Simple recipes</span>
+          </div>
+          <div class="stat">
+            <strong>📅</strong>
+            <span>Weekly preparation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="meal-ideas">
+      <div class="section-head">
+        <div class="tag">Start with the essentials</div>
+        <h2>Simple meal-prep ideas</h2>
+        <p>Use these as inspiration. Choose portions and ingredients that suit your needs and preferences.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="emoji">🥣</div>
+          <h3>Breakfast</h3>
+          <p>Try oats with yoghurt and fruit, or eggs with wholegrain toast.</p>
+        </article>
+        <article class="card">
+          <div class="emoji">🍱</div>
+          <h3>Lunch prep</h3>
+          <p>Combine a protein source, vegetables and rice, potatoes or another grain.</p>
+        </article>
+        <article class="card">
+          <div class="emoji">🍲</div>
+          <h3>Dinner</h3>
+          <p>Prepare a balanced meal such as bean stew, chicken with vegetables, or tofu stir-fry.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="progress" class="highlight">
+      <div class="split">
+        <div>
+          <div class="tag">Consistency over perfection</div>
+          <h2>Your progress starts with small steps.</h2>
+          <p>
+            Set a realistic goal, plan your week and celebrate consistency.
+            Our future progress tracker will help you record workouts,
+            habits and personal milestones.
+          </p>
+          <a class="btn" href="#workouts">Plan your first session →</a>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <strong>01</strong>
+            <span>Choose a goal</span>
+          </div>
+          <div class="stat">
+            <strong>02</strong>
+            <span>Build your routine</span>
+          </div>
+          <div class="stat">
+            <strong>03</strong>
+            <span>Track consistency</span>
+          </div>
+          <div class="stat">
+            <strong>04</strong>
+            <span>Review and adapt</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="science">
+      <div class="section-head">
+        <div class="tag">Evidence matters</div>
+        <h2>Fitness advice with a thoughtful approach.</h2>
+        <p>
+          FitForge is being designed around established exercise science,
+          public-health guidance and sound nutrition principles — not
+          miracle promises or one-size-fits-all routines.
+        </p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="emoji">📚</div>
+          <h3>Research-informed</h3>
+          <p>Exercise and nutrition guidance should be supported by reliable evidence and credible references.</p>
+        </article>
+        <article class="card">
+          <div class="emoji">🛡️</div>
+          <h3>Safety first</h3>
+          <p>Progress gradually, prioritise recovery and seek qualified advice for medical concerns.</p>
+        </article>
+        <article class="card">
+          <div class="emoji">🧭</div>
+          <h3>Personal flexibility</h3>
+          <p>Different people have different goals, preferences, abilities and starting points.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout">
+        <div class="tag">Welcome to FitForge</div>
+        <h2>Your journey starts here.</h2>
+        <p>
+          Build a routine around movement, balanced meals and habits
+          you can maintain. Start small and keep learning.
+        </p>
+        <a class="btn" href="#workouts">Explore the website →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#home">FIT<span>FORGE</span></a>
+    <p>Evidence-informed fitness and meal-planning education.</p>
+    <p>General information only; not a substitute for individual medical advice.</p>
+    <p>© 2026 FitForge</p>
+  </footer>
+
+</body>
+</html>
