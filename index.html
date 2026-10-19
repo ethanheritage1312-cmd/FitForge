@@ -159,6 +159,59 @@ header nav {
     font-size: .72rem;
   }
 }
+  
+.hero-background {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(20,30,25,.88), rgba(20,30,25,.48) 48%, rgba(20,30,25,.08)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=90") center/cover no-repeat;
+  padding: 80px 0;
+}
+
+.hero-background .hero-copy {
+  width: min(1120px, 90%);
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-background h1 {
+  color: #fffefa;
+  max-width: 750px;
+}
+
+.hero-background h1 em {
+  color: #a9c98b;
+}
+
+.hero-background .hero-copy > p {
+  color: #f1f1ed;
+  max-width: 600px;
+}
+
+.hero-background .eyebrow {
+  color: #c5e0aa;
+}
+
+@media (max-width: 520px) {
+  .hero-background {
+    min-height: 600px;
+    padding: 55px 0;
+  }
+
+  .hero-background h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero-background .actions {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -189,6 +242,7 @@ header nav {
 
 
 <main>
+
 <section class="hero hero-background" id="home">
   <div class="container hero-copy">
     <span class="eyebrow">STRONGER · HEALTHIER · HAPPIER</span>
@@ -205,10 +259,6 @@ header nav {
     <p style="font-size:.8rem;margin-top:22px">A welcoming space for every body, every goal and every starting point.</p>
   </div>
 </section>
-<section class="promise"><div class="container promise-inner">
-<strong>Real people. Real goals. Real progress.</strong>
-<p>Personalised fitness and wellness without the one-size-fits-all approach.</p>
-</div></section>
 <section class="section goals" id="goals"><div class="container">
 <div class="heading">
 <span class="eyebrow">MADE FOR YOUR GOALS</span>
