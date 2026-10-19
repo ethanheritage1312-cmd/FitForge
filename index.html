@@ -1068,9 +1068,13 @@
       } else if (focus === "wellness") {
         suggestion = "Start with one manageable daily habit, such as a relaxed walk or a regular bedtime.";
       } else if (focus === "nutrition") {
-        suggestion = "Begin by adding variety to meals, drinking water regularly and learning about balanced nutrition.";
-      } else {
-        suggestion = "Try gentle mobility exercises or a comfortable walk, adjusting the activity to your ability.";
+  suggestion = "Begin by adding variety to meals, drinking water regularly and learning about balanced nutrition.";
+} else if (focus === "mealplan") {
+  suggestion = "Start with a flexible meal plan built around balanced meals, foods you enjoy and your everyday schedule.";
+} else if (focus === "supplements") {
+  suggestion = "Start by reviewing your everyday nutrition and learning about supplement safety. Supplements are not necessary for everyone; ask a healthcare professional before using them.";
+} else {
+  suggestion = "Try gentle mobility exercises or a comfortable walk, adjusting the activity to your ability.";
       }
 
       if (experience === "beginner") {
