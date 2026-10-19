@@ -343,6 +343,13 @@ document.getElementById("resultDetails").textContent=
 document.getElementById("result").style.display="block";
 document.getElementById("result").scrollIntoView({behavior:"smooth",block:"nearest"});
 });
+  
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function () {
+  navLinks.classList.toggle("open");
+});
 </script>
 </body>
 </html>
